@@ -2,6 +2,43 @@
 # 처음 실행할 때 터미널에서 이메일을 묻지 않게 한다 (원클릭 실행용)
 showEmailPrompt = false
 maxUploadSize = 200
+# app/static 폴더(폰트)를 app/static/... 경로로 제공
+enableStaticServing = true
 
 [browser]
 gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"
+
+# Meta 디자인 토큰 (docs/DESIGN-meta.md): 흰 캔버스, 코발트 실행 버튼, 둥근 pill 버튼
+# Optimistic VF는 공개 폰트가 아니므로 한글을 지원하는 Pretendard(OFL, app/static/fonts)로 대신한다.
+[theme]
+base = "light"
+primaryColor = "#0064e0"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f1f4f7"
+textColor = "#1c1e21"
+linkColor = "#0457cb"
+linkUnderline = false
+borderColor = "#ced0d4"
+dataframeBorderColor = "#dee3e9"
+dataframeHeaderBackgroundColor = "#f1f4f7"
+showWidgetBorder = true
+baseRadius = "8px"
+buttonRadius = "full"
+baseFontSize = 16
+font = "Pretendard, Montserrat, Helvetica, Arial, sans-serif"
+headingFont = "Pretendard, Montserrat, Helvetica, Arial, sans-serif"
+headingFontWeights = [600, 500, 500, 500, 500, 500]
+greenColor = "#31a24c"
+orangeColor = "#f2a918"
+redColor = "#e41e3f"
+blueColor = "#0064e0"
+chartCategoricalColors = ["#0064e0"]
+
+[[theme.fontFaces]]
+family = "Pretendard"
+url = "app/static/fonts/PretendardVariable.woff2"
+weight = "45 920"
+style = "normal"

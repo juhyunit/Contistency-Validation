@@ -1,3 +1,5 @@
-# Windows 배치 파일은 CRLF여야 cmd에서 제대로 실행된다
-*.bat text eol=crlf
+# run.bat은 저장소에도 CRLF로 저장한다 (-text: 줄바꿈 변환 안 함).
+# GitHub에서 파일 하나만 내려받아도 Windows cmd.exe가 읽는 형식 그대로 받게 하기 위해서다.
+*.bat -text
 *.sh text eol=lf
+*.woff2 binary
