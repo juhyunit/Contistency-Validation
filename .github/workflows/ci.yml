@@ -1,0 +1,28 @@
+name: CI
+
+# main에 push할 때마다 테스트와 정답 대비 평가를 돌린다.
+# 재현율 100%·오탐 0건이 깨지면 evaluate.py가 종료 코드 1을 돌려 실패로 표시된다.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: 의존성 설치 (uv.lock 그대로)
+        run: uv sync --locked
+
+      - name: 테스트
+        run: uv run pytest -q
+
+      - name: 합성 데이터 생성 (시드 고정, 커밋하지 않음)
+        run: uv run python tools/generate_data.py
+
+      - name: 정답 대비 평가 (재현율 100%, 오탐 0건)
+        run: uv run python tools/evaluate.py

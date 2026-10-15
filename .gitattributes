@@ -1,0 +1,3 @@
+# Windows 배치 파일은 CRLF여야 cmd에서 제대로 실행된다
+*.bat text eol=crlf
+*.sh text eol=lf

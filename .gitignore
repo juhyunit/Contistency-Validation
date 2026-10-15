@@ -1,0 +1,15 @@
+# 실행 데이터: DB, 원본 보관, 보고서, 합성 데이터는 커밋하지 않는다
+data/
+*.db
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# OS / 편집기
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
