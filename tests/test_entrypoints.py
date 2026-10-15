@@ -78,7 +78,11 @@ def test_streamlit_app_pages_and_sample_flow(workspace):
     assert not at.exception
     assert at.session_state["page"] == "상세 내역"
     assert at.session_state["f_severity"] == ["ERROR"]
+    assert at.session_state["f_stage"] == ["품질 검증", "기준정보"]
     assert len(at.dataframe) == 1
+    shown = at.dataframe[0].value
+    assert set(shown["규칙"].str[:2]) == {"DQ", "MD"}  # 집계표 오류(SM·RC)는 섞이지 않는다
+    assert len(shown) == 62
 
     for view in ("계좌별 대사 결과", "규칙 설명"):
         at.session_state["detail_view"] = view

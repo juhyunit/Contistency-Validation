@@ -99,6 +99,7 @@ def open_detail(detail_filter: dict) -> None:
     else:
         st.session_state["f_severity"] = detail_filter.get("severity", [])
         st.session_state["f_rules"] = detail_filter.get("rules", [])
+        st.session_state["f_stage"] = detail_filter.get("stages", [])
         st.session_state["detail_view"] = "오류 목록"
     st.session_state["page"] = DETAIL
 

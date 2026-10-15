@@ -10,7 +10,7 @@ from dataclasses import dataclass, field
 
 import pandas as pd
 
-from recon.glossary import RULE_GUIDES
+from recon.glossary import RULE_GUIDES, RULE_STAGE_LABELS
 from recon.models import ERROR, RUN_SUCCESS, TRANSACTIONS, WARN
 from recon.reconcile import CAUSE_EXCLUDED_TXN, CAUSE_REVIEW_TXN, CAUSE_UNKNOWN
 
@@ -135,7 +135,8 @@ def checklist(stats: dict, issues: pd.DataFrame, recon: pd.DataFrame) -> list[Ch
                 "오류가 있어 대사에서 뺀 거래예요. 격리 거래 CSV에 오류 사유가 함께 들어 있어요.",
                 "원천 데이터를 고친 뒤 '재처리'로 다시 실행하세요.",
                 tuple((f"{RULE_GUIDES[rule].title}", n) for rule, n in top),
-                {"view": "issues", "severity": [ERROR], "files": [TRANSACTIONS]},
+                # 거래를 격리하는 단계(품질 검증·기준정보)의 오류만 보여 준다
+                {"view": "issues", "severity": [ERROR], "stages": [RULE_STAGE_LABELS["DQ"], RULE_STAGE_LABELS["MD"]]},
             )
         )
 
