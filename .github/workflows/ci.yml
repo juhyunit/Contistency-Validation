@@ -1,10 +1,9 @@
 name: CI
 
-# main에 push할 때마다 테스트와 정답 대비 평가를 돌린다.
+# push·PR마다 테스트와 정답 대비 평가를 돌린다 (브랜치 구분 없음).
 # 재현율 100%·오탐 0건이 깨지면 evaluate.py가 종료 코드 1을 돌려 실패로 표시된다.
 on:
   push:
-    branches: [main]
   pull_request:
 
 jobs:
